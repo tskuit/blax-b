@@ -8,7 +8,7 @@ on: [push]
 ##      - deployment
 
 jobs:
-  dispatch:
+  Trigger remote building in dev environment:
     environment: dev
     runs-on: ubuntu-latest
     steps:
@@ -26,6 +26,8 @@ jobs:
               branch: "${{ github.ref_name }}"
             },
           })
+
+
 
 ## branch: "${{ github.ref_name }}"
 ## github.ref_name string The short ref name of the branch or tag that triggered the workflow run. This value matches the branch or tag name shown on GitHub. For example, feature-branch-1.
