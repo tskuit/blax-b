@@ -19,6 +19,6 @@ jobs:
           await github.rest.actions.createWorkflowDispatch({
             owner: 'tskuit',
             repo: 'blax-a',
-            workflow_id: 'github-build.yml',
+            workflow_id: 'github-dispatch.yaml',
             ref: 'main'
           })
