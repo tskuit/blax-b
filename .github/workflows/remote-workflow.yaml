@@ -17,17 +17,15 @@ jobs:
       with:
         github-token: ${{ secrets.ACCESS_TOKEN }}
         script: |
-          try {
-            const result = await github.rest.actions.createWorkflowDispatch({
-              owner: 'tskuit',
-              repo: 'blax-a',
-              workflow_id: 'github-dispatch.yaml',
-              ref: 'main'
-            })
-          } catch(error) {
-            console.error(error);
-            core.setFailed(error);
-          }
+          const result = await github.rest.actions.createWorkflowDispatch({
+            owner: 'tskuit',
+            repo: 'blax-a',
+            workflow_id: 'github-dispatch.yaml',
+            ref: 'main'
+            inputs: {
+              branch: ${{ github.ref }}
+            },
+          })
 
 
 
