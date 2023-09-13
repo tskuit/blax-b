@@ -17,12 +17,17 @@ jobs:
       with:
         github-token: ${{ secrets.ACCESS_TOKEN }}
         script: |
-          const result = await github.rest.actions.createWorkflowDispatch({
-            owner: 'tskuit',
-            repo: 'blax-a',
-            workflow_id: 'github-dispatch.yaml',
-            ref: 'main'
-          })
+          try {
+            const result = await github.rest.actions.createWorkflowDispatch({
+              owner: 'tskuit',
+              repo: 'blax-a',
+              workflow_id: 'github-dispatch.yaml',
+              ref: 'main'
+            })
+          } catch(error) {
+            console.error(error);
+            core.setFailed(error);
+          }
 
 
 
@@ -43,3 +48,23 @@ jobs:
 #            console.error(error);
 #            core.setFailed(error);
 #          }
+
+
+
+##OK working
+##jobs:
+##  dispatch:
+##    environment: dev
+##    runs-on: ubuntu-latest
+##    steps:
+##    - name: trigger-workflow-in-different-repo
+##      uses: actions/github-script@v6
+##      with:
+##        github-token: ${{ secrets.ACCESS_TOKEN }}
+##        script: |
+##          const result = await github.rest.actions.createWorkflowDispatch({
+##            owner: 'tskuit',
+##            repo: 'blax-a',
+##            workflow_id: 'github-dispatch.yaml',
+##            ref: 'main'
+##          })
