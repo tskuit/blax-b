@@ -17,7 +17,7 @@ jobs:
       with:
         github-token: ${{ secrets.ACCESS_TOKEN }}
         script: |
-          try {
+#          try {
             const result = await github.rest.actions.createWorkflowDispatch({
               owner: 'tskuit',
               repo: 'blax-a',
@@ -27,8 +27,8 @@ jobs:
 #                tags: ${{ steps.get-tags.outputs.tags }}
 #              },
             })
-            console.log(result);
-          } catch(error) {
-            console.error(error);
-            core.setFailed(error);
-          }
+#            console.log(result);
+#          } catch(error) {
+#            console.error(error);
+#            core.setFailed(error);
+#          }
