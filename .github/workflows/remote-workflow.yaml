@@ -17,16 +17,27 @@ jobs:
       with:
         github-token: ${{ secrets.ACCESS_TOKEN }}
         script: |
+          const result = await github.rest.actions.createWorkflowDispatch({
+            owner: 'tskuit',
+            repo: 'blax-a',
+            workflow_id: 'github-dispatch.yaml',
+            ref: 'main'
+          })
+
+
+
+
+#        script: |
 #          try {
-            const result = await github.rest.actions.createWorkflowDispatch({
-              owner: 'tskuit',
-              repo: 'blax-a',
-              workflow_id: 'github-dispatch.yaml',
-              ref: 'main'
+#            const result = await github.rest.actions.createWorkflowDispatch({
+#              owner: 'tskuit',
+#              repo: 'blax-a',
+#              workflow_id: 'github-dispatch.yaml',
+#              ref: 'main'
 #              inputs: {
 #                tags: ${{ steps.get-tags.outputs.tags }}
 #              },
-            })
+#            })
 #            console.log(result);
 #          } catch(error) {
 #            console.error(error);
