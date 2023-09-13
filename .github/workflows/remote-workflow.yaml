@@ -8,7 +8,7 @@ on: [push]
 ##      - deployment
 
 jobs:
-  Trigger-remote-building-in-dev-environment:
+  Trigger-remote-build:
     environment: dev
     runs-on: ubuntu-latest
     steps:
